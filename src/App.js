@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
 
-function App() {
+import { Login, VehicleList } from "./components";
+
+import "./index.css";
+
+export default function App() {
+  const [userDetail, setUserDetail] = useState(null);
+
+  useEffect(() => {
+    const userDetailStr = JSON.stringify(userDetail);
+    userDetail && sessionStorage.setItem("userDetail", userDetailStr);
+  }, [userDetail]);
+
+  const getUserDetail = (details) => {
+    setUserDetail(details);
+  };
+
+  const userDetailsStr = sessionStorage.getItem("userDetail");
+  const userDetailsObject = JSON.parse(userDetailsStr);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {userDetailsObject ? (
+        <VehicleList
+          userDetail={userDetailsObject}
+          setUserDetail={setUserDetail}
+        />
+      ) : (
+        <>
+          <Login getUserDetail={getUserDetail} />
+        </>
+      )}
+    </>
   );
 }
-
-export default App;

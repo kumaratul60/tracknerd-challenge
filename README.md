@@ -1,4 +1,41 @@
-# Getting Started with Create React App
+# Project overview
+
+## design implementation
+
+Login for authentication -------> Fetch the list of Vehicles---->(clicked any one vehicle card)
+|
+|
+|---->Plot the updated location of the vehicle on the Map via firebase
+|
+|----------------> Back to prev Page
+|
+|---->back to previous vehicle listing page
+
+                                                                                        |
+                                                                                        |
+                                                                                        |
+                                                                                        |----------------> Logout -------> redirect to Login page
+
+:heavy_check_mark: Tech stack used for this project is: React, Tailwind-css, firebase
+
+:heavy_check_mark: Login for authentication
+-> Login component to take input value of email and password verify them and "fetch" user Data from "API end point" using POST method.
+
+Test credentials are
+
+Username: jeewan.thapa9@gmail.com
+Password: tracknerd@123
+
+:heavy_check_mark: Display the total list of Vehicle
+-> Fetch the list of Vehicles -> using fetch web api to call api by GET method, and
+show vehicle cards (update live vehicle data from firebase)
+
+:heavy_check_mark:Live Vehicle Tracking on Map
+->Plotting the updated location (on the event trigger of firebase) of the checked vehicle on the Map
+
+:heavy_check_mark: click on logout button redirect to login screen and session are cleared.
+
+:heavy_check_mark: used React best practice like performance optimization used code splitting for optimize build and file and folder structure, code reusability and etc.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
